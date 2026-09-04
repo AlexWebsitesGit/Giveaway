@@ -1,179 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giveaway</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #111827, #1e1b4b);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px;
-        }
-        .container {
-            width: 100%;
-            max-width: 650px;
-            text-align: center;
-        }
-        .badge {
-            display: inline-block;
-            background: #7c3aed;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #c7c7d1;
-            font-size: 17px;
-            margin-bottom: 35px;
-        }
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .step {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 18px;
-            padding: 22px;
-            display: flex;
-            align-items: center;
-            text-align: left;
-            transition: 0.2s;
-        }
-        .step:hover {
-            transform: translateY(-2px);
-            background: rgba(255,255,255,0.12);
-        }
-        .number {
-            width: 48px;
-            height: 48px;
-            background: #7c3aed;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 21px;
-            font-weight: bold;
-            margin-right: 18px;
-            flex-shrink: 0;
-        }
-        .step-content {
-            flex: 1;
-        }
-        .step-content h2 {
-            font-size: 19px;
-            margin-bottom: 5px;
-        }
-        .step-content p {
-            color: #bdbdc8;
-            font-size: 14px;
-        }
-        .button {
-            display: inline-block;
-            background: white;
-            color: #111827;
-            text-decoration: none;
-            padding: 11px 16px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-left: 15px;
-            transition: 0.2s;
-        }
-        .button:hover {
-            transform: scale(1.05);
-        }
-        .footer {
-            margin-top: 28px;
-            color: #888896;
-            font-size: 13px;
-        }
-        @media (max-width: 550px) {
-            h1 {
-                font-size: 34px;
-            }
-            .step {
-                padding: 18px;
-            }
-            .button {
-                padding: 9px 12px;
-                font-size: 13px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giveaway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1: #2a1a5e;
+    --bg2: #7b2ff7;
+    --bg3: #ff3d81;
+    --gold: #ffc93c;
+    --cyan: #34e0d3;
+    --ink: #1c1440;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    font-family:'Nunito', sans-serif;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    padding: 44px 18px;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(255,61,129,.55), transparent 45%),
+      radial-gradient(circle at 88% 20%, rgba(52,224,211,.4), transparent 50%),
+      radial-gradient(circle at 50% 100%, rgba(255,201,60,.25), transparent 55%),
+      linear-gradient(160deg, var(--bg1), #4a1f8f 55%, var(--ink));
+    background-attachment: fixed;
+  }
+  .card{
+    width:100%;
+    max-width: 560px;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: var(--gold);
+    color: var(--ink);
+    font-weight:800;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transform: rotate(-3deg);
+    box-shadow: 0 3px 0 rgba(0,0,0,.25);
+  }
+  .knife{ width:14px; height:14px; }
+  h1{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 60px;
+    letter-spacing: 1px;
+    line-height: 0.95;
+    margin: 16px 0 8px;
+    background: linear-gradient(90deg, #fff, var(--cyan) 60%, var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede{
+    color: rgba(255,255,255,.8);
+    font-size: 16.5px;
+    font-weight:500;
+    max-width: 42ch;
+    margin-bottom: 30px;
+  }
+  .step{
+    position:relative;
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 16px;
+    padding: 18px 18px 18px 16px;
+    margin-bottom: 14px;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    overflow:hidden;
+  }
+  .step::before{
+    content:'';
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width: 5px;
+  }
+  .step:nth-child(1)::before{ background: var(--bg3); }
+  .step:nth-child(2)::before{ background: var(--cyan); }
+  .step:nth-child(3)::before{ background: var(--gold); }
+
+  .num{
+    flex-shrink:0;
+    width: 40px; height:40px;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 19px;
+    color:#fff;
+  }
+  .step:nth-child(1) .num{ background: var(--bg3); }
+  .step:nth-child(2) .num{ background: var(--cyan); color:var(--ink); }
+  .step:nth-child(3) .num{ background: var(--gold); color:var(--ink); }
+
+  .body{ flex:1; min-width:0; }
+  .body h2{ font-size: 17px; font-weight:800; margin-bottom:2px; }
+  .body p{ font-size: 14px; color: rgba(255,255,255,.72); font-weight:500; }
+
+  .go{
+    flex-shrink:0;
+    text-decoration:none;
+    color:#fff;
+    font-weight:800;
+    font-size: 13.5px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.3);
+    transition: transform .12s ease, background .12s ease;
+  }
+  .go:hover{ background: rgba(255,255,255,.28); transform: translateY(-1px); }
+
+  footer{
+    margin-top: 26px;
+    text-align:center;
+    color: rgba(255,255,255,.6);
+    font-size: 14px;
+    font-weight:600;
+  }
+  footer strong{ color: var(--gold); }
+
+  @media (max-width: 480px){
+    h1{ font-size: 46px; }
+    .step{ flex-direction:column; align-items:flex-start; }
+    .go{ width:100%; text-align:center; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">🎉 GIVEAWAY</div>
-        <h1>Enter the Giveaway!</h1>
-        <p class="subtitle">
-            Complete these 3 simple steps to enter the giveaway.
-        </p>
-        <div class="steps">
-            <!-- STEP 1 -->
-            <div class="step">
-                <div class="number">1</div>
-                <div class="step-content">
-                    <h2>📱 Follow our TikTok account</h2>
-                    <p>Visit our TikTok profile and follow us.</p>
-                </div>
-                <!-- CHANGE THIS LINK -->
-                <a class="button"
-                   href="https://www.tiktok.com/@YOUR_ACCOUNT"
-                   target="_blank">
-                    Follow
-                </a>
-            </div>
-            <!-- STEP 2 -->
-            <div class="step">
-                <div class="number">2</div>
-                <div class="step-content">
-                    <h2>🎮 Add your Roblox account</h2>
-                    <p>Add your Roblox account to participate.</p>
-                </div>
-                <!-- CHANGE THIS LINK -->
-                <a class="button"
-                   href="https://www.roblox.com.am/users/255774735423/profile#about"
-                   target="_blank">
-                    Roblox
-                </a>
-            </div>
-            <!-- STEP 3 -->
-            <div class="step">
-                <div class="number">3</div>
-                <div class="step-content">
-                    <h2>❤️ Like at least one video</h2>
-                    <p>Like at least one of our TikTok videos.</p>
-                </div>
-                <!-- CHANGE THIS LINK -->
-                <a class="button"
-                   href="https://www.tiktok.com/@YOUR_ACCOUNT/video/VIDEO_ID"
-                   target="_blank">
-                    Watch Video
-                </a>
-            </div>
-        </div>
-        <p class="footer">
-            🍀 Good luck to everyone!
-        </p>
+  <div class="card">
+    <span class="badge">
+      <svg class="knife" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 21L13 11" stroke="#1c1440" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M13 11L20 4C21 3 22 4 21 5L14 12" fill="#1c1440"/>
+      </svg>
+      GIVEAWAY LIVE
+    </span>
+    <h1>Complete<br>3 steps to win</h1>
+    <p class="lede">Finish everything below and you're entered. No shortener links, no catch.</p>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div class="body">
+        <h2>Follow on TikTok</h2>
+        <p>Hit follow on our official account.</p>
+      </div>
+      <a class="go" href="https://www.tiktok.com/@YOUR_ACCOUNT" target="_blank">Follow</a>
     </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div class="body">
+        <h2>Add the Roblox account</h2>
+        <p>Send a friend request to the account shown.</p>
+      </div>
+      <a class="go" href="https://www.roblox.com.am/users/255774735423/profile#about" target="_blank">Add</a>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div class="body">
+        <h2>Like one video</h2>
+        <p>Just one like on any of our videos counts.</p>
+      </div>
+      <a class="go" href="https://www.tiktok.com/@YOUR_ACCOUNT/video/VIDEO_ID" target="_blank">Like</a>
+    </div>
+
+    <footer>Good luck — <strong>winner picked soon.</strong></footer>
+  </div>
 </body>
 </html>
